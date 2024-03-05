@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const Tareas = () => {
-    const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState([])
 
   const [newTask, setNewTask] = useState('')
 
@@ -21,26 +21,25 @@ const Tareas = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
       <h1>Tareas</h1>
-      <div>
-        <input
+      <div className='info' >
+        <input className='task'
           type="text"
           placeholder="Ingrese la nueva tarea"
           value={newTask}
           onChange={handleTaskInputChange}
         />
-        <button onClick={addTask}>Agregar tarea</button>
+        <button className='add' onClick={addTask}>Agregar tarea</button>
         <hr />
       </div>
       <ul>
         {tasks.map(task => (
           <li key={task.id}>
-           
-            <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+            <span >
               {task.text}
             </span>
-            <button onClick={() => deleteTask(task.id)}>Eliminar</button>
+            <button className='delete' onClick={() => deleteTask(task.id)}>Eliminar</button>
           </li>
         ))}
       </ul>
