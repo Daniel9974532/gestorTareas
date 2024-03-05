@@ -1,6 +1,24 @@
 import React, { useState } from 'react'
 
+const Tareas = () => {
+    const [tasks, setTasks] = useState([])
 
+  const [newTask, setNewTask] = useState('')
+
+  const handleTaskInputChange = (event) => {
+    setNewTask(event.target.value);
+  }
+
+  const addTask = () => {
+    if (newTask.trim() !== '') {
+      setTasks([...tasks, { id: Date.now(), text: newTask, completed: false }]);
+      setNewTask('');
+    }
+  }
+
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id !== taskId));
+  }
 
   return (
     <div>
@@ -28,6 +46,6 @@ import React, { useState } from 'react'
       </ul>
     </div>
   )
-
+}
 
 export default Tareas
